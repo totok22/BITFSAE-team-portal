@@ -1,0 +1,65 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Misc
+.DS_Store
+.fleet
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Template folders (temporary reference repos)
+template/
+temp-docs/
+temp-portfolio/
+temp-blog/
+
+# Server files (cloned web repository)
+server_files
+
+# Security - Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.jks
+secrets/
+.secrets/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Test coverage
+coverage
+.nyc_output
+
+# AI/IDE assistant configs (optional - uncomment if needed)
+# .kilocode/
+# .cursor/
+# .continue/

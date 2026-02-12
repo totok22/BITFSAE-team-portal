@@ -1,0 +1,46 @@
+/* ==================== CSS 变量 ==================== */
+:root {
+    /* 深色模式默认值 - 蓝色系 */
+    --primary-color: #007AFF;
+    --primary-rgb: 0, 122, 255;
+    --primary-glow: rgba(0, 122, 255, 0.4);
+    --bg-color: #080808;
+    --bg-gradient: radial-gradient(circle at center, #111d2b 0%, #080808 100%);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-color: #f0f0f0;
+    --text-dim: #a0a0a0;
+    --header-bg: rgba(8, 8, 8, 0.85);
+    --header-glass: rgba(8, 8, 8, 0.45);
+    --header-glass-scrolled: rgba(8, 8, 8, 0.7);
+    --header-text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+    --modal-bg: #121212;
+    --footer-bg: #0d0d0d;
+    --logo-filter: brightness(0) invert(1);
+    --media-filter: grayscale(100%) brightness(1.2);
+    --section-spacing: 120px;
+}
+
+[data-theme="light"],
+.light,
+.light-mode {
+    --bg-color: #ffffff;
+    --bg-gradient: radial-gradient(circle at center, #f0f8ff 0%, #ffffff 100%);
+    --card-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --text-color: #1d1d1f;
+    --text-dim: #86868b;
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --header-glass: rgba(255, 255, 255, 0.8);
+    --header-glass-scrolled: rgba(255, 255, 255, 0.95);
+    --header-text-shadow: 0 1px 6px rgba(255, 255, 255, 0.65);
+    --modal-bg: #ffffff;
+    --footer-bg: #f9f9fa;
+    --logo-filter: none;
+    --media-filter: grayscale(100%) brightness(0.9);
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}

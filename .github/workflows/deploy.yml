@@ -1,0 +1,91 @@
+name: Deploy to Aliyun
+
+on:
+  push:
+    branches: [main, beian-mode] # main 和 beian-mode 推送时触发
+  workflow_dispatch: # 允许手动点击按钮触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install --platform=linux --arch=x64 sharp
+
+      # 安装 jemalloc：sharp/libvips 的 native 内存管理与 glibc 默认分配器冲突，
+      # 在预渲染阶段可能触发 munmap_chunk(): invalid pointer 崩溃。
+      # jemalloc 对碎片化分配更友好，可有效规避此问题。
+      - name: Install jemalloc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libjemalloc2 > /dev/null 2>&1
+
+      - name: Build Project
+        run: npm run build
+        env:
+          # 生产构建启用 Studio，方便运营组可视化编辑内容
+          NUXT_STUDIO: 'true'
+          # 提升 Node 堆内存上限，避免 Nitro 打包阶段 OOM
+          NODE_ENV: production
+          NODE_OPTIONS: '--max-old-space-size=6144 --no-node-snapshot'
+          VIPS_WARNING: '0'
+          # 使用 jemalloc 替代 glibc malloc，防止 sharp/libvips native 内存释放崩溃
+          LD_PRELOAD: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2
+          # Nuxt Studio GitHub OAuth（nuxt-studio 模块使用 STUDIO_ 前缀的环境变量）
+          STUDIO_GITHUB_CLIENT_ID: ${{ secrets.STUDIO_GITHUB_CLIENT_ID }}
+          STUDIO_GITHUB_CLIENT_SECRET: ${{ secrets.STUDIO_GITHUB_CLIENT_SECRET }}
+
+      # 打包构建产物 (.output 目录) 和 PM2 配置文件
+      - name: Zip Output
+        run: tar -czf release.tar.gz .output ecosystem.config.cjs
+
+      # 发送文件到阿里云
+      - name: SCP to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "release.tar.gz"
+          target: "/tmp/"
+
+      # SSH 登录服务器执行部署
+      - name: Execute Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            # 1. 清理旧的构建产物，避免 symlink 冲突
+            cd /opt/bitfsae
+            rm -rf .output
+            
+            # 2. 解压新的构建产物
+            tar -xzf /tmp/release.tar.gz -C /opt/bitfsae
+            
+            # 3. 删除临时包
+            rm /tmp/release.tar.gz
+            
+            # 4. 加载 .env 文件中的凭据并重启 PM2
+            # .env 文件需在服务器上手动创建一次（见 ecosystem.config.cjs 中的注释）
+            pm2 delete bitfsae 2>/dev/null || true
+            if [ -f /opt/bitfsae/.env ]; then
+              set -a; source /opt/bitfsae/.env; set +a
+            fi
+            pm2 start ecosystem.config.cjs
+            
+            # 5. 保存 PM2 状态
+            pm2 save

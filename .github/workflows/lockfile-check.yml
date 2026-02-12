@@ -1,0 +1,27 @@
+name: Lockfile Check
+
+'on':
+  pull_request:
+    branches: [main]
+
+jobs:
+  lockfile-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Verify package-lock is in sync
+        run: npm ci --ignore-scripts
+
+      - name: Verify lockfile was committed
+        run: |
+          npm install --package-lock-only --ignore-scripts
+          git diff --exit-code -- package-lock.json

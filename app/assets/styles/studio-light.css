@@ -1,0 +1,28 @@
+/* Nuxt Studio 浅色主题覆盖 */
+/* 仅针对 Nuxt Studio 编辑器界面，不影响前端渲染 */
+
+.nuxt-studio,
+.nuxt-studio .panel,
+.nuxt-studio .sidebar,
+.nuxt-studio .editor,
+[data-studio-theme] {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+.nuxt-studio .sidebar,
+.studio-sidebar {
+  background: #f8f9fa !important;
+  border-right: 1px solid #e1e4e8 !important;
+}
+
+.nuxt-studio .editor,
+.studio-editor {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+.nuxt-studio .preview,
+.studio-preview {
+  background: #ffffff !important;
+}
