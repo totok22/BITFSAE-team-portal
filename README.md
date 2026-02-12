@@ -1,4 +1,4 @@
-# 🏎️ BITFSAE 官方网站
+# <img src="https://img.bitfsae.xin/img/20260212221151299.svg" height="22" style="vertical-align: middle;" /> BITFSAE 官方网站
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Nuxt](https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js)](https://nuxt.com/)
