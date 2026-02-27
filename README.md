@@ -1,25 +1,32 @@
-# <img src="https://img.bitfsae.xin/img/20260212221151299.svg" height="22" style="vertical-align: middle;" /> BITFSAE 网站
+# <img src="https://img.bitfsae.xin/img/20260212221151299.svg" height="22" style="vertical-align: middle;" /> BITFSAE 门户网站
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Nuxt](https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js)](https://nuxt.com/)
-[![Vue](https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js)](https://vuejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+<p align="center">
+  <strong>简体中文</strong> | <a href="./README.en.md">English</a>
+</p>
 
-> 北京理工大学纯电动方程式赛车队网站
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  <a href="https://nuxt.com/"><img src="https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js" alt="Nuxt" /></a>
+  <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js" alt="Vue" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript" alt="TypeScript" /></a>
+</p>
 
-🌐 **线上地址**: [bitfsae.xin](https://bitfsae.xin).
-## 📖 项目简介
+> 北京理工大学纯电动方程式赛车队门户网站
+
+**线上地址**: [bitfsae.xin](https://bitfsae.xin)
+
+## 项目简介
 
 这是 BITFSAE（北京理工大学纯电动方程式赛车队）的门户网站，用于展示：
 
-- 📰 车队新闻动态与赛事报道
-- 🏆 赛事信息与成绩
-- 🚗 历代赛车技术参数
-- 🤝 赞助商信息
+- 车队新闻动态与赛事报道
+- 赛事信息与成绩
+- 历代赛车技术参数
+- 赞助商信息
 
-支持中英文双语切换、深浅色主题、SSR + ISR 混合渲染。
+项目支持中英文双语切换、深浅色主题，以及 SSR + ISR 混合渲染。
 
-## 🛠️ 技术栈
+## 技术栈
 
 | 分类 | 技术 |
 |------|------|
@@ -30,7 +37,7 @@
 | **国际化** | @nuxtjs/i18n |
 | **数学公式** | KaTeX (remark-math) |
 
-## 🚀 快速开始
+## 快速开始
 
 ### 环境要求
 
@@ -56,9 +63,9 @@ npm run build
 npm run preview
 ```
 
-## 📁 项目结构
+## 项目结构
 
-```
+```text
 bitfsae-nuxt/
 ├── app/                    # Nuxt 应用层
 │   ├── components/         # Vue 组件
@@ -74,7 +81,7 @@ bitfsae-nuxt/
 └── server/                 # 服务端 API
 ```
 
-## 📝 内容管理
+## 内容管理
 
 内容使用 Markdown 格式存储在 `content/` 目录，支持 MDC 语法增强。
 
@@ -86,20 +93,20 @@ bitfsae-nuxt/
 | 赛事 | `content/events/` | 赛事信息 |
 | 赛车 | `content/cars/` | 历代赛车 |
 
-## 🌍 国际化
+## 国际化
 
 项目支持中英文双语：
 
 - `i18n/locales/zh.json` - 中文翻译
 - `i18n/locales/en.json` - 英文翻译
 
-## 📄 License
+## License
 
 本项目基于 [MIT License](LICENSE) 开源。
 
-## 🙏 致谢
+## 致谢
 
-感谢所有为 BITFSAE 车队做出贡献的成员和赞助商！
+感谢所有为 BITFSAE 车队做出贡献的成员和赞助商。
 
 ---
 
