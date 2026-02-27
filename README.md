@@ -1,17 +1,16 @@
-# <img src="https://img.bitfsae.xin/img/20260212221151299.svg" height="22" style="vertical-align: middle;" /> BITFSAE 官方网站
+# <img src="https://img.bitfsae.xin/img/20260212221151299.svg" height="22" style="vertical-align: middle;" /> BITFSAE 网站
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Nuxt](https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js)](https://nuxt.com/)
 [![Vue](https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 
-> 北京理工大学纯电动方程式赛车队官方网站
+> 北京理工大学纯电动方程式赛车队网站
 
-🌐 **线上地址**: [bitfsae.xin](https://bitfsae.xin).（目前处于备案期间，预计3月底可正常访问）
-
+🌐 **线上地址**: [bitfsae.xin](https://bitfsae.xin).
 ## 📖 项目简介
 
-这是 BITFSAE（北京理工大学纯电动方程式赛车队）的官方网站项目，用于展示：
+这是 BITFSAE（北京理工大学纯电动方程式赛车队）的门户网站，用于展示：
 
 - 📰 车队新闻动态与赛事报道
 - 🏆 赛事信息与成绩
